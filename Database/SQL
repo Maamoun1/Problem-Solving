@@ -40,6 +40,13 @@ Select * from Employees where MonthlySalary<700 and Gendor='F';
 --Get All Employess that Salary less than 700 and Genor is female using Not
 Select * from Employees where NOT MonthlySalary>700 and NOT Gendor='M';
 
+--Get All Employees that CountryID not equal one using operator >
+select * from Employees where CountryID>1;
 
+--Get All Employees that CountryID not equal one using <>
+select * from Employees where   CountryID <>1;
+
+--Get All Employees that CountryID not equal one using Not
+select * from Employees where NOT CountryID=1;
 
 
