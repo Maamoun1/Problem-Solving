@@ -1,2 +1,8 @@
 --TO GET All Employees
 SELECT * FROM Employees
+
+--TO GET All Employees with other solutions
+SELECT Employees.* FROM Employees
+
+--To Get ID,FirstName,LastName,MonthSalary From Employyes
+
