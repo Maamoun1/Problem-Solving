@@ -13,5 +13,29 @@ Select * from Departments;
 --Get All Countries
 Select * from Countries;
 
+--Get All DepartmentID
+Select DepartmentID from Employees;
+
+--Get All DepartmentID without duplicated
+Select Distinct DepartmentID from Employees;
+
+--Get All FirstName and DepartmentID 
+Select FirstName, DepartmentID from Employees;
+
+--Get All FirstName and DepartmentID without duplicated
+Select distinct FirstName, DepartmentID from Employees;
+
+--Get All Employees that Gendor female
+Select * from Employees where Gendor='F';
+
+--Get All Employees that MonthlySalary less than or equal 700
+Select * from Employees where  MonthlySalary<=700;
+
+--Get All Employees that MonthlySalary less than or equal 700 using Not
+Select * from Employees where NOT MonthlySalary>=700;
+
+
+
+
 
 
