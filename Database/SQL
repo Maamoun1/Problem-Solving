@@ -49,4 +49,16 @@ select * from Employees where   CountryID <>1;
 --Get All Employees that CountryID not equal one using Not
 select * from Employees where NOT CountryID=1;
 
+select * from Employees where DepartmentID=1;
 
+--Get All Employees that DepartmentID  equal one and Genor Male
+select * from Employees where DepartmentID=1 and Gendor='M';
+
+--Get All Employees that DepartmentID  equal and quale 2
+select * from Employees where DepartmentID=1 Or DepartmentID=2;
+
+--Get All Employees that work now
+Select * from Employees where ExitDate is Null;
+
+--Get All Employees that not work now
+Select * from Employees where ExitDate  is Not Null;
