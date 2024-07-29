@@ -1,1 +1,2 @@
-
+--TO GET All Employees
+SELECT * FROM Employees
