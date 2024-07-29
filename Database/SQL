@@ -34,7 +34,11 @@ Select * from Employees where  MonthlySalary<=700;
 --Get All Employees that MonthlySalary less than or equal 700 using Not
 Select * from Employees where NOT MonthlySalary>=700;
 
+--Get All Employess that Salary less than 700 and Genor is female
+Select * from Employees where MonthlySalary<700 and Gendor='F';
 
+--Get All Employess that Salary less than 700 and Genor is female using Not
+Select * from Employees where NOT MonthlySalary>700 and NOT Gendor='M';
 
 
 
