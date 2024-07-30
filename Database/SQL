@@ -62,3 +62,53 @@ Select * from Employees where ExitDate is Null;
 
 --Get All Employees that not work now
 Select * from Employees where ExitDate  is Not Null;
+
+--Get All Employees that DepartmentID  equal 1 or 2 or 3 or 5
+select * from Employees where DepartmentID in(1,2,3,5);
+
+--Get All Employees that FirstName  equal Jacob or Brooks or Harper
+SELECT * FROM Employees  WHERE  FirstName IN('Jacob','Brooks','Harper'); 
+
+--Get all Name Departments from employees that salary less than or equal 700;
+SELECT Name From Departments where ID IN 
+(
+SELECT DepartmentID FROM Employees  WHERE MonthlySalary<=700
+);
+
+--Get ID,FirstName,Salary when first department and order by asc
+SELECT ID,FirstName,MonthlySalary FROM Employees Where DepartmentID=1 
+ORDER BY MonthlySalary ASC;
+
+--Get ID,FirstName,Salary when first department and order by desc
+SELECT ID,FirstName,MonthlySalary FROM Employees Where DepartmentID=1 
+ORDER BY MonthlySalary desc;
+
+--Get ID,FirstName,Salary when firstName asc and  department desc;
+SELECT ID,FirstName,MonthlySalary FROM Employees Where DepartmentID=1 
+ORDER BY FirstName ASC, MonthlySalary DESC; 
+
+-- This will show top 5 employees. 
+Select top 5 * from Employees;
+
+--Get 5% from employees
+SELECT TOP 5 PERCENT * FROM Employees
+
+--This will show top  10% of the data.
+select top 10 percent * from Employees; 
+
+-- this will show the all salaries ordered from the heighest to lowest. 
+select  MonthlySalary from employees order by MonthlySalary Desc; 
+
+-- this will show the all salaries ordered from the heighest to lowest without redundancy. 
+select distinct MonthlySalary from employees order by MonthlySalary Desc; 
+
+-- this will show the heighest 3 salaries. 
+select  distinct  top 3 MonthlySalary from employees order by MonthlySalary Desc; 
+
+ --This will show all employees who takes one of the heighest 3 salaries. 
+select ID , FirstName, MonthlySalary from Employees where MonthlySalary In 
+( 
+ select  distinct  top 3 MonthlySalary from employees 
+ order by MonthlySalary Desc 
+) 
+Order By MonthlySalary Desc
