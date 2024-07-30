@@ -131,3 +131,17 @@ SELECT ID,FirstName,MonthlySalary, YearlySalary=MonthlySalary*12, BonusAmount=Mo
 
  --Get datetime now
  SELECT NOW=GETDATE();
+
+--Get all employees MonthSalary between 500 and 1000
+ SELECT * FROM Employees WHERE MonthlySalary BETWEEN 500 AND 1000;
+
+--Get Count,Sum,AVG,MIN,MAX in MonthSalary when departmentID equal 1
+ SELECT  
+TotalCount=Count(MonthlySalary), 
+TotalSum=Sum(MonthlySalary), 
+Average=AVG(MonthlySalary), 
+MinimumSalary=MIN(MonthlySalary), 
+MaximumSalary=MAX(MonthlySalary) 
+FROM Employees
+
+where DepartmentID=1
