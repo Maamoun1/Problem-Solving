@@ -112,3 +112,22 @@ select ID , FirstName, MonthlySalary from Employees where MonthlySalary In
  order by MonthlySalary Desc 
 ) 
 Order By MonthlySalary Desc
+
+--Get ID,FirstName,Month Salary / 2 
+SELECT ID,FirstName,A=MonthlySalary/2 FROM Employees; 
+
+--Get ID,FullName
+SELECT ID,FullName=FirstName+' '+LastName From Employees; 
+
+--Get ID,FullName using as
+SELECT ID,FirstName+' '+LastName  as FullName From Employees;
+
+--Get ID,FirstName,MonthlySalary , Yearly Salary
+SELECT ID,FirstName,MonthlySalary,MonthlySalary * 12 as YearlySalary from Employees;
+
+--Increase Bonus Amount
+SELECT ID,FirstName,MonthlySalary, YearlySalary=MonthlySalary*12, BonusAmount=MonthlySalary*BonusPerc 
+ FROM Employees; 
+
+ --Get datetime now
+ SELECT NOW=GETDATE();
