@@ -4,11 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*
- Problem : write a program print your name on the screen
- */
-
-
+// Problem 1: write a program print your name on the screen 
 
 namespace Problem_1
 {
@@ -19,8 +15,7 @@ namespace Problem_1
      {
            Console.WriteLine("You are Name is " + Name);
      }
-
-       
+   
         static void Main(string[] args)
         {
            
