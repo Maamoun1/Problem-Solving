@@ -46,10 +46,10 @@ select * from Employees where CountryID>1;
 --Get All Employees that CountryID not equal one
 select * from Employees where   CountryID <>1;
 
---Get All Employees that CountryID not equal one
+--Get All Employees that CountryID not equal one.
 select * from Employees where NOT CountryID=1;
 --**********************************************
---Get All Employees that DepartmentID  equal one
+--Get All Employees that DepartmentID  equal one.
 select * from Employees where DepartmentID=1;
 
 --Get All Employees that DepartmentID  equal one and Genor Male
@@ -61,7 +61,7 @@ select * from Employees where DepartmentID=1 Or DepartmentID=2;
 --Get All Employees that work now
 Select * from Employees where ExitDate is Null;
 
---Get All Employees that not work now
+--Get All Employees that not work now.
 Select * from Employees where ExitDate  is Not Null;
 
 
