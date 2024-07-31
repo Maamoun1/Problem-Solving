@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/*
+// Problem 1: write a program to print your name on the screen 
 
-// Problem 1: write a program print your name on the screen 
-
+*/
 namespace Problem_1
 {
 
@@ -21,7 +22,6 @@ namespace Problem_1
            
             PrintName("Mamoun");
             
-
             Console.ReadKey();
         }
     }
