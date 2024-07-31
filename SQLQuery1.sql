@@ -40,16 +40,15 @@ Select * from Employees where MonthlySalary<700 and Gendor='F';
 --Get All Employess that Salary less than 700 and Genor is female using Not
 Select * from Employees where NOT MonthlySalary>700 and NOT Gendor='M';
 
---Get All Employees that CountryID not equal one 
+--Get All Employees that CountryID not equal one using operator >
 select * from Employees where CountryID>1;
 
---Get All Employees that CountryID not equal one
+--Get All Employees that CountryID not equal one using <>
 select * from Employees where   CountryID <>1;
 
---Get All Employees that CountryID not equal one.
+--Get All Employees that CountryID not equal one using Not
 select * from Employees where NOT CountryID=1;
---**********************************************
---Get All Employees that DepartmentID  equal one.
+
 select * from Employees where DepartmentID=1;
 
 --Get All Employees that DepartmentID  equal one and Genor Male
@@ -61,7 +60,123 @@ select * from Employees where DepartmentID=1 Or DepartmentID=2;
 --Get All Employees that work now
 Select * from Employees where ExitDate is Null;
 
---Get All Employees that not work now.
+--Get All Employees that not work now
 Select * from Employees where ExitDate  is Not Null;
 
+--Get All Employees that DepartmentID  equal 1 or 2 or 3 or 5
+select * from Employees where DepartmentID in(1,2,3,5);
 
+--Get All Employees that FirstName  equal Jacob or Brooks or Harper
+SELECT * FROM Employees  WHERE  FirstName IN('Jacob','Brooks','Harper'); 
+
+--Get all Name Departments from employees that salary less than or equal 700;
+SELECT Name From Departments where ID IN 
+(
+SELECT DepartmentID FROM Employees  WHERE MonthlySalary<=700
+);
+
+--Get ID,FirstName,Salary when first department and order by asc
+SELECT ID,FirstName,MonthlySalary FROM Employees Where DepartmentID=1 
+ORDER BY MonthlySalary ASC;
+
+--Get ID,FirstName,Salary when first department and order by desc
+SELECT ID,FirstName,MonthlySalary FROM Employees Where DepartmentID=1 
+ORDER BY MonthlySalary desc;
+
+--Get ID,FirstName,Salary when firstName asc and  department desc;
+SELECT ID,FirstName,MonthlySalary FROM Employees Where DepartmentID=1 
+ORDER BY FirstName ASC, MonthlySalary DESC; 
+
+-- This will show top 5 employees. 
+Select top 5 * from Employees;
+
+--Get 5% from employees
+SELECT TOP 5 PERCENT * FROM Employees
+
+--This will show top  10% of the data.
+select top 10 percent * from Employees; 
+
+-- this will show the all salaries ordered from the heighest to lowest. 
+select  MonthlySalary from employees order by MonthlySalary Desc; 
+
+-- this will show the all salaries ordered from the heighest to lowest without redundancy. 
+select distinct MonthlySalary from employees order by MonthlySalary Desc; 
+
+-- this will show the heighest 3 salaries. 
+select  distinct  top 3 MonthlySalary from employees order by MonthlySalary Desc; 
+
+ --This will show all employees who takes one of the heighest 3 salaries. 
+select ID , FirstName, MonthlySalary from Employees where MonthlySalary In 
+( 
+ select  distinct  top 3 MonthlySalary from employees 
+ order by MonthlySalary Desc 
+) 
+Order By MonthlySalary Desc
+
+--Get ID,FirstName,Month Salary / 2 
+SELECT ID,FirstName,A=MonthlySalary/2 FROM Employees; 
+
+--Get ID,FullName
+SELECT ID,FullName=FirstName+' '+LastName From Employees; 
+
+--Get ID,FullName using as
+SELECT ID,FirstName+' '+LastName  as FullName From Employees;
+
+--Get ID,FirstName,MonthlySalary , Yearly Salary
+SELECT ID,FirstName,MonthlySalary,MonthlySalary * 12 as YearlySalary from Employees;
+
+--Increase Bonus Amount
+SELECT ID,FirstName,MonthlySalary, YearlySalary=MonthlySalary*12, BonusAmount=MonthlySalary*BonusPerc 
+ FROM Employees; 
+
+ --Get datetime now
+ SELECT NOW=GETDATE();
+
+--Get all employees MonthSalary between 500 and 1000
+ SELECT * FROM Employees WHERE MonthlySalary BETWEEN 500 AND 1000;
+
+--Get Count,Sum,AVG,MIN,MAX in MonthSalary when departmentID equal 1
+ SELECT  
+TotalCount=Count(MonthlySalary), 
+TotalSum=Sum(MonthlySalary), 
+Average=AVG(MonthlySalary), 
+MinimumSalary=MIN(MonthlySalary), 
+MaximumSalary=MAX(MonthlySalary) 
+FROM Employees
+
+where DepartmentID=1
+
+--Get all number of employees
+SELECT TotalEmployee=COUNT(ID) FROM Employees;
+
+--Having is the where satement for group by 
+select DepartmentID, TotalCount=Count(MonthlySalary),  
+    TotalSum=Sum(MonthlySalary), 
+    Average=Avg(MonthlySalary), 
+    MinSalary=Min(MonthlySalary), 
+    MaxSalary=Max(MonthlySalary)  
+	
+   from Employees 
+   Group By DepartmentID 
+   having Count(MonthlySalary) > 100 
+   order by DepartmentID asc;
+ 
+ 
+ -- Same solution without having :-) 
+select * from  
+( 
+ 
+   select DepartmentID, TotalCount=Count(MonthlySalary),  
+    TotalSum=Sum(MonthlySalary), 
+    Average=Avg(MonthlySalary), 
+    MinSalary=Min(MonthlySalary), 
+    MaxSalary=Max(MonthlySalary)  
+     
+    from Employees 
+  
+       Group By DepartmentID 
+    
+) R1 
+ 
+where R1.TotalCount> 100
+order by R1.DepartmentID asc;
