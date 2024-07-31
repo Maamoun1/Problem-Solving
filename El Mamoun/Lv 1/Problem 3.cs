@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
-write a program to ask number and check if even or odd
+Problem 3 :Write a program to ask the user to enter a number, then Print “ODD” if its odd, Or “Even” if its even.
 */
+
 namespace Problem__3
 {
     internal class Program

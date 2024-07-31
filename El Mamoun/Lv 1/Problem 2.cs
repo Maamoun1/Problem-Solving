@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 /*
- write a program to ask your name and print it.
- */
+Problem 2: Write a program to ask the use to enter his/her name and  print it on screen. 
+*/
+
 namespace Problem_2
 {
     internal class Program

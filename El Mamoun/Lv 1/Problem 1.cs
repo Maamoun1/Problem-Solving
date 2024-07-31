@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 /*
-// Problem 1: write a program to print your name on the screen 
+ Problem 1: Write a program to print your name on screen.
 
 */
 namespace Problem_1
