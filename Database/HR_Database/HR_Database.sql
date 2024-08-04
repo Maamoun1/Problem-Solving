@@ -236,6 +236,27 @@ select ID, FirstName, LastName from Employees Where firstName like '[abc]%';
 -- search for all employees that their first name start with any letter from a to l 
 select ID, FirstName, LastName from Employees Where firstName like '[a-l]%';
 
+--Inner Join two Tables 
+SELECT        Employees.ID, Employees.FirstName, Employees.LastName, Departments.Name as DeptName 
+FROM Employees INNER JOIN  Departments ON Employees.DepartmentID = Departments.ID 
+
+--Inner joind with where 
+SELECT Employees.ID, Employees.FirstName, Employees.LastName, Departments.Name as DeptName 
+FROM Employees INNER JOIN  Departments ON Employees.DepartmentID = Departments.ID 
+where Departments.Name = 'IT'; 
+
+
+--Inner Join Three Tables 
+SELECT Employees.ID, Employees.FirstName, Employees.LastName, Departments.Name as DeptName, 
+Countries.Name AS CountryName FROM Employees INNER JOIN 
+Departments ON Employees.DepartmentID = Departments.ID INNER JOIN 
+ Countries ON Employees.CountryID = Countries.ID 
+
+--Inner Join Three Tables with where 
+SELECT        Employees.ID, Employees.FirstName, Employees.LastName, Departments.Name as DeptName, 
+Countries.Name AS CountryName 
+FROM Employees INNER JOIN Departments ON Employees.DepartmentID = Departments.ID INNER JOIN 
+ Countries ON Employees.CountryID = Countries.ID where Countries.Name = 'USA'; 
 
 
 
