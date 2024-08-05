@@ -258,8 +258,53 @@ Countries.Name AS CountryName
 FROM Employees INNER JOIN Departments ON Employees.DepartmentID = Departments.ID INNER JOIN 
  Countries ON Employees.CountryID = Countries.ID where Countries.Name = 'USA'; 
 
+ --Create view ActiveEmployees 
+CREATE VIEW ActiveEmployees AS 
+SELECT * FROM Employees WHERE ExitDate IS NULL; 
+SELECT * FROM ActiveEmployees
 
+ --Create view ResignedEmployees 
+CREATE VIEW ResignedEmployees AS 
+SELECT * FROM Employees WHERE ExitDate IS NOT NULL
 
+SELECT * FROM ResignedEmployees 
 
+ --Create view ShortDetailedEmployees 
+CREATE VIEW ShortDetailedEmployees AS 
+SELECT ID,FirstName,LastName,Gendor FROM Employees
 
+SELECT* FROM ShortDetailedEmployees 
 
+select * from ActiveEmployees
+
+select * from ResignedEmployees
+
+select * from ActiveEmployees
+Union
+select * from ResignedEmployees
+
+--this will remove the redundancy from the resultset (distinct results only)
+select * from Departments
+union 
+select * from Departments;
+
+--this will append data regardeless of any redundancy
+select * from Departments
+union ALL
+select * from Departments;
+
+SELECT ID,FirstName,LastName,GendorTitle=
+
+CASE 
+WHEN Gendor ='M' THEN 'Male'
+WHEN Gendor ='F' THEN 'Female'
+ELSE 'UnKnown'
+END,
+
+Status=
+
+Case
+WHEN ExitDate is NULL THEN 'Active'
+WHEN ExitDate is Not NULL THEN 'Resigned'
+END
+from Employees

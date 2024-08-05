@@ -38,6 +38,25 @@ SELECT        Customers.CustomerID, Customers.Name, Orders.Amount
 FROM            Customers FULL OUTER JOIN 
                          Orders ON Customers.CustomerID = Orders.CustomerID 
 
+SELECT X='YES'
+WHERE EXISTS (
+SELECT * FROM Orders WHERE Orders.CustomerID=3 AND Orders.Amount < 600);
 
 
+SELECT * FROM Customers T1
+WHERE EXISTS (
+SELECT * FROM Orders
+WHERE Orders.CustomerID=T1.CustomerID AND Orders.Amount < 600)
+
+--Optmize the previous query
+SELECT * FROM Customers T1
+WHERE EXISTS (
+SELECT top 1 * FROM Orders
+WHERE Orders.CustomerID=T1.CustomerID AND Orders.Amount < 600)
+
+--Optmize more the previous query
+SELECT * FROM Customers T1
+WHERE EXISTS (
+SELECT top 1 X='Y' FROM Orders
+WHERE Orders.CustomerID=T1.CustomerID AND Orders.Amount < 600)
 
