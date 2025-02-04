@@ -1,0 +1,33 @@
+﻿using System;
+
+public partial class MyClass
+{
+    public void Method1()
+    {
+        Console.WriteLine("Method 1 is called.");
+    }
+
+    public void Method2()
+    {
+        Console.WriteLine("Method 2 is called.");
+    }
+
+}
+
+class Program
+{
+    static void Main()
+    {
+        //the code of MyClass is seperated in 2 files class1.cs and class2.cs
+        MyClass obj = new MyClass();
+        obj.Method1();
+        obj.Method2();
+
+        Console.ReadKey();
+
+    }
+}
+
+
+
+
